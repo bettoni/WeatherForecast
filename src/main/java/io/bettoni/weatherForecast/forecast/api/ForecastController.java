@@ -1,8 +1,9 @@
-package io.bettoni.weatherForecast.forecast;
+package io.bettoni.weatherForecast.forecast.api;
 
 import io.bettoni.weatherForecast.forecast.domain.ForecastFilter;
 import io.bettoni.weatherForecast.forecast.domain.ForecastResult;
 import io.bettoni.weatherForecast.forecast.domain.ForecastService;
+import io.bettoni.weatherForecast.forecast.exceptions.InvalidCountryCodeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,12 @@ public class ForecastController {
 
     @RequestMapping("/data/{country}/{city}")
     public ForecastResult getForecastFor(@PathVariable String country, @PathVariable String city) {
-        return forecastService.getData(createFilterFrom(country, city));
+        try {
+            return forecastService.getData(createFilterFrom(country, city));
+        } catch (InvalidCountryCodeException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private ForecastFilter createFilterFrom(String country, String city) {
