@@ -1,0 +1,4 @@
+open-weather:
+  api-url: 'http://api.openweathermap.org/data/2.5/forecast?q='
+  app-id: '5c60584b3ad2341a760d320ce266679d'
+  units: 'metric'

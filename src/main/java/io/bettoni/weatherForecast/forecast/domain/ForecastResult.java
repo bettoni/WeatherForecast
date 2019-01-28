@@ -10,7 +10,6 @@ public class ForecastResult {
     private final double averagePressure;
 
     public ForecastResult(double averageDailyTemperature, double averageNightlyTemperature, double averagePressure) {
-
         this.averageDailyTemperature = averageDailyTemperature;
         this.averageNightlyTemperature = averageNightlyTemperature;
         this.averagePressure = averagePressure;

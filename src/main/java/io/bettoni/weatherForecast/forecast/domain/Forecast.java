@@ -1,6 +1,7 @@
 package io.bettoni.weatherForecast.forecast.domain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Forecast {
 
@@ -26,4 +27,19 @@ public class Forecast {
         return pressure;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Forecast forecast = (Forecast) o;
+        return Double.compare(forecast.temperature, temperature) == 0 &&
+                Double.compare(forecast.pressure, pressure) == 0 &&
+                Objects.equals(date, forecast.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, temperature, pressure);
+    }
 }

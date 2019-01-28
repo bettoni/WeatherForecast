@@ -36,7 +36,6 @@ public class ForecastService {
         double averageNightlyTemperature = getNightlyTemperature(forecasts);
         double averagePressure = getPressure(forecasts);
 
-
         return new ForecastResult(averageDailyTemperature, averageNightlyTemperature, averagePressure);
     }
 

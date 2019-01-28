@@ -20,13 +20,8 @@ public class ForecastController {
     }
 
     @RequestMapping("/data/{country}/{city}")
-    public ForecastResult getForecastFor(@PathVariable String country, @PathVariable String city) {
-        try {
-            return forecastService.getData(createFilterFrom(country, city));
-        } catch (InvalidCountryCodeException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public ForecastResult getForecastFor(@PathVariable String country, @PathVariable String city) throws InvalidCountryCodeException {
+        return forecastService.getData(createFilterFrom(country, city));
     }
 
     private ForecastFilter createFilterFrom(String country, String city) {
